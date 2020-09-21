@@ -1,0 +1,34 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+extension {{ prefix }}{{ module_info.name }}TableView: UITableViewDelegate {
+    
+    //MARK: - Select
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedCell = tableView.cellForRow(at: indexPath) as? {{ prefix }}{{ module_info.name }}TableViewCell else {
+            return
+        }
+        self.tableViewProtocol?.didSelect{{ prefix }}{{ module_info.name }}Cell(cell: selectedCell)
+    }
+    
+    //MARK: - Deselect
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let deselectedCell = tableView.cellForRow(at: indexPath) as? {{ prefix }}{{ module_info.name }}TableViewCell else {
+            return
+        }
+        self.tableViewProtocol?.didDeselect{{ prefix }}{{ module_info.name }}Cell(cell: deselectedCell)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 4
+    }
+}

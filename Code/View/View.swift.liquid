@@ -1,0 +1,56 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+protocol {{ prefix }}{{ module_info.name }}ViewProtocol: AnyObject {
+    func didSelect{{ prefix }}{{ module_info.name }}Cell(cell: {{ prefix }}{{ module_info.name }}TableViewCell)
+    func didDeselect{{ prefix }}{{ module_info.name }}Cell(cell: {{ prefix }}{{ module_info.name }}TableViewCell)
+}
+
+class {{ prefix }}{{ module_info.name }}View: UIView {
+    
+    //MARK: - IBProperties
+    
+    @IBOutlet var contentView: UIView!
+    @IBOutlet var tableView: {{ prefix }}{{ module_info.name }}TableView! {
+        didSet {
+            self.tableView.register(UINib(nibName: "{{ prefix }}{{ module_info.name }}ΤableViewCell", bundle: nil), forCellReuseIdentifier: "{{ prefix }}{{ module_info.name }}ΤableViewCellIdentifier")
+            self.tableView.tableViewProtocol = self
+        }
+    }
+    
+    //MARK: - Properties
+    
+    var viewProtocol: {{ prefix }}{{ module_info.name }}ViewProtocol?
+    
+    //MARK: - Initializers
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    //MARK: - Life Cycle
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    //MARK: - Functions
+    
+    fileprivate func commonInit() {
+        
+    }
+    
+}
